@@ -27,4 +27,9 @@ public class TestController {
     public String test(){
         return "error";
     }
+
+    @RequestMapping("/kristina")
+    public String KristinaClick(){
+        return "lalalalalalalalala love kristina";
+    }
 }
