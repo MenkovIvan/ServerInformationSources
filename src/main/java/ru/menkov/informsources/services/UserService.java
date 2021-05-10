@@ -59,6 +59,8 @@ public class UserService {
 
         if (userInDB == null && userInDB2 == null){
             log.info("add user to database");
+            userFromClient.setOnline(false);
+            userFromClient.setType("user");
             userRepository.save(userFromClient);
             message = "OK";
             status = RequestStatus.OK.getStatus();
