@@ -34,7 +34,7 @@ public class UserService {
             message = "OK";
             status = RequestStatus.OK.getStatus();
             log.info("login is true");
-            return getJsonString(message,status,userInDB.getName());
+            return getJsonString(message,status,userInDB.getUsername());
         }
         else if(userInDB != null){
             log.info("false password");
@@ -51,7 +51,7 @@ public class UserService {
 
     public String registrUser(String inputJson){
         User userFromClient = gson.fromJson(inputJson, User.class);
-        User userInDB = userRepository.findUserByName(userFromClient.getName());
+        User userInDB = userRepository.findUserByUsername(userFromClient.getUsername());
         User userInDB2 = userRepository.findUserByEmail(userFromClient.getEmail());
 
         String message;
@@ -71,7 +71,7 @@ public class UserService {
 
     public String getInfoUser(String inputJson){
         User userFromClient = gson.fromJson(inputJson, User.class);
-        User userInDb = userRepository.findUserByName(userFromClient.getName());
+        User userInDb = userRepository.findUserByUsername(userFromClient.getUsername());
 
         String message;
         Integer status;
