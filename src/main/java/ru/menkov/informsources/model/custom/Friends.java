@@ -1,14 +1,12 @@
 package ru.menkov.informsources.model.custom;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "friends",schema = "inf_sources")
 public class Friends {
+    @Id
     private Integer user_id;
     @Column(name="friends")
     @ElementCollection(targetClass=Integer.class)
