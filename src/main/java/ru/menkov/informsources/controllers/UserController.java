@@ -11,20 +11,24 @@ import ru.menkov.informsources.services.UserService;
 @Slf4j
 public class UserController {
     private UserService userService;
+
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @RequestMapping("/user/login")
     public String loginUser(@RequestBody String inputJson){
         log.info("Request to login User, body = { " + inputJson + "}");
         return userService.loginUser(inputJson);
     }
+
     @RequestMapping("/user/registr")
     public String registrUser(@RequestBody String inputJson){
         log.info("Request to registr User, body= {" + inputJson + "}");
         return userService.registrUser(inputJson);
     }
+
     @RequestMapping("/user/info")
     public String getInfoUser(@RequestBody String inputJson){
         log.info("Request to get Info about User, body = {" + inputJson + "}");

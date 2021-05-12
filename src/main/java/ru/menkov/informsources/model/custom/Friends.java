@@ -1,19 +1,18 @@
 package ru.menkov.informsources.model.custom;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 
-public class Group {
-    private Integer group_id;
+@Entity
+@Table(name = "friends",schema = "inf_sources")
+public class Friends {
     private Integer user_id;
+    @Column(name="friends")
+    @ElementCollection(targetClass=Integer.class)
     private ArrayList<Integer> friends;
-
-    public Integer getGroup_id() {
-        return group_id;
-    }
-
-    public void setGroup_id(Integer group_id) {
-        this.group_id = group_id;
-    }
 
     public Integer getUser_id() {
         return user_id;

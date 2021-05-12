@@ -11,7 +11,7 @@ import ru.menkov.informsources.repositories.UserRepository;
 
 @Service
 @Slf4j
-public class UserService {
+public class UserService extends ru.menkov.informsources.services.Service {
 
     private final UserRepository userRepository;
 
@@ -90,29 +90,7 @@ public class UserService {
         return getJsonStringWithUser(userInDb,message,status);
     }
 
-    private String getJsonString(String message, Integer status) {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("status",status);
-        jsonObject.addProperty("message",message);
-        String jsonToClient = jsonObject.toString();
-
-        log.info("return to client={}", jsonToClient);
-        return jsonToClient;
-    }
-
-    private String getJsonString(String message, Integer status, String name) {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("status",status);
-        jsonObject.addProperty("message",message);
-        jsonObject.addProperty("name",name);
-        String jsonToClient = jsonObject.toString();
-
-        log.info("return to client={}", jsonToClient);
-        return jsonToClient;
-    }
-
     private String getJsonStringWithUser(User user, String message, Integer status) {
-        JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("status",status);
         jsonObject.addProperty("message",message);
 
