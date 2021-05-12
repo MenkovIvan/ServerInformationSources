@@ -31,8 +31,8 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
         String message = "Result of add = {";
         Integer status;
 
-        if ((!userRepository.existsUserById_us(friendsFromClient.getId_us())
-                || !userRepository.existsUserById_us(friendsFromClient.getFriends()))) {
+        if ((!userRepository.existsUserById(friendsFromClient.getId_us())
+                || !userRepository.existsUserById(friendsFromClient.getFriends()))) {
 
             message += "incorrect, user or friend with input id are not exist";
             status = RequestStatus.ERROR.getStatus();
