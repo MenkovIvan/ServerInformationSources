@@ -1,7 +1,6 @@
 package ru.menkov.informsources.services;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +33,7 @@ public class UserService extends ru.menkov.informsources.services.Service {
             message = "OK";
             status = RequestStatus.OK.getStatus();
             log.info("login is true");
-            return getJsonString(message,status,userInDB.getUsername());
+            return getJsonString(message,status,userInDB.getName());
         }
         else if(userInDB != null){
             log.info("false password");
@@ -51,7 +50,7 @@ public class UserService extends ru.menkov.informsources.services.Service {
 
     public String registrUser(String inputJson){
         User userFromClient = gson.fromJson(inputJson, User.class);
-        User userInDB = userRepository.findUserByUsername(userFromClient.getUsername());
+        User userInDB = userRepository.findUserByName(userFromClient.getName());
         User userInDB2 = userRepository.findUserByEmail(userFromClient.getEmail());
 
         String message;
@@ -73,7 +72,7 @@ public class UserService extends ru.menkov.informsources.services.Service {
 
     public String getInfoUser(String inputJson){
         User userFromClient = gson.fromJson(inputJson, User.class);
-        User userInDb = userRepository.findUserByUsername(userFromClient.getUsername());
+        User userInDb = userRepository.findUserByName(userFromClient.getName());
 
         String message;
         Integer status;

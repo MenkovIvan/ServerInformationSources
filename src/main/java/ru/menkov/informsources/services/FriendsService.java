@@ -10,13 +10,13 @@ import ru.menkov.informsources.repositories.UserRepository;
 
 @Service
 public class FriendsService extends ru.menkov.informsources.services.Service {
-    @Autowired
     private final FriendsRepository friendsRepository;
-    @Autowired
+
     private final UserRepository userRepository;
 
     private Gson gson = new Gson();
 
+    @Autowired
     FriendsService(FriendsRepository friendsRepository, UserRepository userRepository){
         this.friendsRepository = friendsRepository;
         this.userRepository = userRepository;
@@ -28,13 +28,13 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
         String message = "Result of add = {";
         Integer status;
 
-        if ((!userRepository.existsUserByUser_id(friendsFromClient.getUser_id())
-                || !userRepository.existsUserByUser_id(friendsFromClient.getFriends()))) {
+        if ((!userRepository.existsUserById_us(friendsFromClient.getId_us())
+                || !userRepository.existsUserById_us(friendsFromClient.getFriends()))) {
 
             message += "incorrect, user or friend with input id are not exist";
             status = RequestStatus.ERROR.getStatus();
 
-        } else if (friendsRepository.existsFriendsByUser_idAndFriends(friendsFromClient.getUser_id(), friendsFromClient.getFriends())){
+        } else if (friendsRepository.existsFriendsById_usAndFriends(friendsFromClient.getId_us(), friendsFromClient.getFriends())){
             message += "incorrect, user is follow to this friend yet";
             status = RequestStatus.ERROR.getStatus();
         } else{
@@ -53,7 +53,7 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
         String message = "Result of add = {";
         Integer status;
 
-        if (friendsRepository.existsFriendsByUser_idAndFriends(friendsFromClient.getUser_id(), friendsFromClient.getFriends())){
+        if (friendsRepository.existsFriendsById_usAndFriends(friendsFromClient.getId_us(), friendsFromClient.getFriends())){
             friendsRepository.delete(friendsFromClient);
 
             message += "correct, user or friend with input id are not exist";

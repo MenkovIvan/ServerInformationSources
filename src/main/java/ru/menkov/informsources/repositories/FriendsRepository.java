@@ -6,5 +6,5 @@ import ru.menkov.informsources.model.custom.Friends;
 
 @Repository
 public interface FriendsRepository extends CrudRepository<Friends,Integer> {
-    Boolean existsFriendsByUser_idAndFriends(Integer user_id, Integer friend);
+    Boolean existsFriendsById_usAndFriends(Integer id_us, Integer friend);
 }

@@ -6,8 +6,8 @@ import ru.menkov.informsources.model.custom.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User,Integer> {
-    User findUserByUsername(String username);
+    User findUserByName(String name);
     User findUserByEmail(String email);
     Boolean existsUserByEmailAndPassword(String email, String password);
-    Boolean existsUserByUser_id(Integer id);
+    Boolean existsUserById_us(Integer Id_us);
 }
