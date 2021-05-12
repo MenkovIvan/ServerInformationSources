@@ -31,13 +31,13 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
         String message = "Result of add = {";
         Integer status;
 
-        if ((!userRepository.existsUserById(friendsFromClient.getId_us())
+        if ((!userRepository.existsUserById(friendsFromClient.getId())
                 || !userRepository.existsUserById(friendsFromClient.getFriends()))) {
 
             message += "incorrect, user or friend with input id are not exist";
             status = RequestStatus.ERROR.getStatus();
 
-        } else if (friendsRepository.existsFriendsById_usAndFriends(friendsFromClient.getId_us(), friendsFromClient.getFriends())){
+        } else if (friendsRepository.existsFriendsByIdAndFriends(friendsFromClient.getId(), friendsFromClient.getFriends())){
             message += "incorrect, user is follow to this friend yet";
             status = RequestStatus.ERROR.getStatus();
         } else{
@@ -56,7 +56,7 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
         String message = "Result of add = {";
         Integer status;
 
-        if (friendsRepository.existsFriendsById_usAndFriends(friendsFromClient.getId_us(), friendsFromClient.getFriends())){
+        if (friendsRepository.existsFriendsByIdAndFriends(friendsFromClient.getId(), friendsFromClient.getFriends())){
             friendsRepository.delete(friendsFromClient);
 
             message += "correct, user or friend with input id are not exist";
