@@ -8,8 +8,10 @@ import java.util.ArrayList;
 public class Friends {
     @Id
     private Integer user_id;
-    @Column(name="friends")
+
     @ElementCollection(targetClass=Integer.class)
+    @CollectionTable(name="friends", joinColumns=@JoinColumn(name="user_id"))
+    @Column(name="friends")
     private ArrayList<Integer> friends;
 
     public Integer getUser_id() {
