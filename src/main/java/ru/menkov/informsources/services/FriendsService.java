@@ -1,6 +1,7 @@
 package ru.menkov.informsources.services;
 
 import com.google.gson.Gson;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.menkov.informsources.helpers.RequestStatus;
@@ -9,7 +10,9 @@ import ru.menkov.informsources.repositories.FriendsRepository;
 import ru.menkov.informsources.repositories.UserRepository;
 
 @Service
+@Slf4j
 public class FriendsService extends ru.menkov.informsources.services.Service {
+
     private final FriendsRepository friendsRepository;
 
     private final UserRepository userRepository;
@@ -17,7 +20,7 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
     private Gson gson = new Gson();
 
     @Autowired
-    FriendsService(FriendsRepository friendsRepository, UserRepository userRepository){
+    public FriendsService(FriendsRepository friendsRepository, UserRepository userRepository){
         this.friendsRepository = friendsRepository;
         this.userRepository = userRepository;
     }
