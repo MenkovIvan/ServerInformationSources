@@ -1,7 +1,6 @@
 package ru.menkov.informsources.model.custom;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 @Table(name = "friends",schema = "inf_sources")
@@ -9,10 +8,7 @@ public class Friends {
     @Id
     private Integer user_id;
 
-    @ElementCollection(targetClass=Integer.class)
-    @CollectionTable(name="friends", joinColumns=@JoinColumn(name="user_id"))
-    @Column(name="friends")
-    private ArrayList<Integer> friends;
+    private Integer friends;
 
     public Integer getUser_id() {
         return user_id;
@@ -22,11 +18,11 @@ public class Friends {
         this.user_id = user_id;
     }
 
-    public ArrayList<Integer> getFriends() {
+    public Integer getFriends() {
         return friends;
     }
 
-    public void setFriends(ArrayList<Integer> friends) {
+    public void setFriends(Integer friends) {
         this.friends = friends;
     }
 }

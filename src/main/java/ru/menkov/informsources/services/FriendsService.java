@@ -6,16 +6,20 @@ import org.springframework.stereotype.Service;
 import ru.menkov.informsources.helpers.RequestStatus;
 import ru.menkov.informsources.model.custom.Friends;
 import ru.menkov.informsources.repositories.FriendsRepository;
+import ru.menkov.informsources.repositories.UserRepository;
 
 @Service
 public class FriendsService extends ru.menkov.informsources.services.Service {
     @Autowired
     private final FriendsRepository friendsRepository;
+    @Autowired
+    private final UserRepository userRepository;
 
     private Gson gson = new Gson();
 
-    FriendsService(FriendsRepository friendsRepository){
+    FriendsService(FriendsRepository friendsRepository, UserRepository userRepository){
         this.friendsRepository = friendsRepository;
+        this.userRepository = userRepository;
     }
 
     public String addFriends(String inputJson){
@@ -24,27 +28,44 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
         String message = "Result of add = {";
         Integer status;
 
-        for (int i = friendsFromClient.getFriends().size() - 1; i > 0; i --) {
-            if(friendsRepository.existsFriendsByUser_idAndFriends(friendsFromClient.getUser_id(), friendsFromClient.getFriends().get(i))){
-                message += "incorrect = " + friendsFromClient.getFriends().get(i) + ", ";
-                friendsFromClient.getFriends().remove(i);
-            }
-            else{
-                message += "correct = " + friendsFromClient.getFriends().get(i) + ", ";
-            }
-        }
-        message += "}";
-        try{
+        if ((!userRepository.existsUserByUser_id(friendsFromClient.getUser_id())
+                || !userRepository.existsUserByUser_id(friendsFromClient.getFriends()))) {
+
+            message += "incorrect, user or friend with input id are not exist";
+            status = RequestStatus.ERROR.getStatus();
+
+        } else if (friendsRepository.existsFriendsByUser_idAndFriends(friendsFromClient.getUser_id(), friendsFromClient.getFriends())){
+            message += "incorrect, user is follow to this friend yet";
+            status = RequestStatus.ERROR.getStatus();
+        } else{
+            message += "correct = " + friendsFromClient.getFriends();
             friendsRepository.save(friendsFromClient);
             status = RequestStatus.OK.getStatus();
-        } catch (Exception e){
-            status = RequestStatus.ERROR.getStatus();
         }
+        message += "}";
 
         return getJsonString(message,status);
     }
 
     public String deleteFriends(String inputJson){
-        return "";
+        Friends friendsFromClient = gson.fromJson(inputJson, Friends.class);
+
+        String message = "Result of add = {";
+        Integer status;
+
+        if (friendsRepository.existsFriendsByUser_idAndFriends(friendsFromClient.getUser_id(), friendsFromClient.getFriends())){
+            friendsRepository.delete(friendsFromClient);
+
+            message += "correct, user or friend with input id are not exist";
+            status = RequestStatus.OK.getStatus();
+
+        } else{
+
+            message += "incorrect, user or friend with input id are not exist";
+            status = RequestStatus.ERROR.getStatus();
+
+        }
+        message += "}";
+        return getJsonString(message,status);
     }
 }
