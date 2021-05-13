@@ -37,7 +37,7 @@ public class UserController {
 
     @RequestMapping("/user/exit")
     public String exitApp(@RequestBody String inputJson){
-        log.info("Request to get Info about User, body = {" + inputJson + "}");
+        log.info("Request to exit from App, body = {" + inputJson + "}");
         return userService.setOffline(inputJson);
     }
 }

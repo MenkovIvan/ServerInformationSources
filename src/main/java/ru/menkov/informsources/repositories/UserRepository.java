@@ -13,6 +13,6 @@ public interface UserRepository extends CrudRepository<User,Integer> {
     Boolean existsUserByEmailAndPassword(String email, String password);
     Boolean existsUserById(Integer id);
     @Modifying
-    @Query("update User u set u.online = ?1")
+    @Query("update inf_sources.users u set u.online = ?1")
     void setUserInfoById(Boolean online);
 }
