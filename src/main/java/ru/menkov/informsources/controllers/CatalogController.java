@@ -36,12 +36,6 @@ public class CatalogController {
         return catalogService.updateCatalog(inputJson);
     }
 
-    @RequestMapping("/catalog/info")
-    public String getInfoCatalog(@RequestBody String inputJson){
-        log.info("Request to get info about Catalog by id, body = { " + inputJson + "}");
-        return catalogService.getInfoCatalog(inputJson);
-    }
-
     @RequestMapping("/catalog/all")
     public String getAllCatalog(@RequestBody String inputJson){
         log.info("Request to get all Catalogs, body");

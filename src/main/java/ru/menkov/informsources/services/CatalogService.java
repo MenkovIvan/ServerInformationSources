@@ -65,7 +65,7 @@ public class CatalogService extends ru.menkov.informsources.services.Service {
 
             log.info("not exist in db");
             message += "incorrect, catalog with input name not exist";
-            status = RequestStatus.OK.getStatus();
+            status = RequestStatus.ERROR.getStatus();
         }
 
         message += "}";
@@ -91,37 +91,12 @@ public class CatalogService extends ru.menkov.informsources.services.Service {
 
             log.info("not exist in db");
             message += "incorrect, catalog with input name not exist";
-            status = RequestStatus.OK.getStatus();
+            status = RequestStatus.ERROR.getStatus();
         }
 
         message += "}";
 
         return getJsonString(message, status);
-    }
-
-    public String getInfoCatalog(String inputJson){
-        Catalog catalogFromClient = gson.fromJson(inputJson, Catalog.class);
-        Catalog catalogFromDb = catalogRepository.findCatalogById(catalogFromClient.getId());
-
-        String message = "Result of getInfo = {";
-        Integer status;
-
-        if (catalogFromDb != null){
-
-            log.info("exist in db, get to client");
-            message += "correct, catalog with input name is exist, get info about it";
-            status = RequestStatus.OK.getStatus();
-
-        } else{
-
-            log.info("not exist in db");
-            message += "incorrect, catalog with input id not exist";
-            status = RequestStatus.OK.getStatus();
-        }
-
-        message += "}";
-
-        return getJsonStringWithCatalog(catalogFromDb,message,status);
     }
 
     public String getAllCatalog(){
@@ -148,7 +123,7 @@ public class CatalogService extends ru.menkov.informsources.services.Service {
 
             log.info("not exist in db");
             message += "incorrect, catalog with input name not exist";
-            status = RequestStatus.OK.getStatus();
+            status = RequestStatus.ERROR.getStatus();
         }
 
         message += "}";
