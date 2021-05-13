@@ -41,7 +41,7 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
             message += "incorrect, user is follow to this friend yet";
             status = RequestStatus.ERROR.getStatus();
         } else{
-            message += "correct = " + friendsFromClient.getFriends();
+            message += "correct information about follow was added";
             friendsRepository.save(friendsFromClient);
             status = RequestStatus.OK.getStatus();
         }
@@ -59,7 +59,7 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
         if (friendsRepository.existsFriendsByIdAndFriends(friendsFromClient.getId(), friendsFromClient.getFriends())){
             friendsRepository.delete(friendsFromClient);
 
-            message += "correct, user or friend with input id are not exist";
+            message += "correct, information about unfollow was added";
             status = RequestStatus.OK.getStatus();
 
         } else{

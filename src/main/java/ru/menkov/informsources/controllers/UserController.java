@@ -34,4 +34,10 @@ public class UserController {
         log.info("Request to get Info about User, body = {" + inputJson + "}");
         return userService.getInfoUser(inputJson);
     }
+
+    @RequestMapping("/user/exit")
+    public String exitApp(@RequestBody String inputJson){
+        log.info("Request to get Info about User, body = {" + inputJson + "}");
+        return userService.setOffline(inputJson);
+    }
 }

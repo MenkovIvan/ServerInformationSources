@@ -31,6 +31,7 @@ public class UserService extends ru.menkov.informsources.services.Service {
 
         if (userRepository.existsUserByEmailAndPassword(userFromClient.getEmail(),userFromClient.getPassword())) {
             message = "OK";
+            userRepository.setUserInfoById(true);
             status = RequestStatus.OK.getStatus();
             log.info("login is true");
             return getJsonString(message,status,userInDB.getName());
@@ -81,6 +82,26 @@ public class UserService extends ru.menkov.informsources.services.Service {
             log.info("user exist");
             message = "OK";
             status = RequestStatus.OK.getStatus();
+        } else{
+            log.info("user is not exist");
+            message = "user is not exist";
+            status = RequestStatus.ERROR.getStatus();
+        }
+        return getJsonStringWithUser(userInDb,message,status);
+    }
+
+    public String setOffline(String inputJson){
+        User userFromClient = gson.fromJson(inputJson, User.class);
+        User userInDb = userRepository.findUserByName(userFromClient.getName());
+
+        String message;
+        Integer status;
+
+        if (userInDb != null ){
+            log.info("user exist");
+            message = "OK, exit from app";
+            status = RequestStatus.OK.getStatus();
+            userRepository.setUserInfoById(false);
         } else{
             log.info("user is not exist");
             message = "user is not exist";
