@@ -1,13 +1,17 @@
 package ru.menkov.informsources.model.product;
 
-import java.sql.Blob;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "catalog",schema = "inf_sources")
 public class Catalog {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
     private String description;
-    private Blob image;
 
     public Integer getId() {
         return id;
@@ -33,11 +37,4 @@ public class Catalog {
         this.description = description;
     }
 
-    public Blob getImage() {
-        return image;
-    }
-
-    public void setImage(Blob image) {
-        this.image = image;
-    }
 }

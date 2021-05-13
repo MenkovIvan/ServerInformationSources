@@ -53,7 +53,7 @@ public class FriendsService extends ru.menkov.informsources.services.Service {
     public String deleteFriends(String inputJson){
         Friends friendsFromClient = gson.fromJson(inputJson, Friends.class);
 
-        String message = "Result of add = {";
+        String message = "Result of delete = {";
         Integer status;
 
         if (friendsRepository.existsFriendsByIdAndFriends(friendsFromClient.getId(), friendsFromClient.getFriends())){
