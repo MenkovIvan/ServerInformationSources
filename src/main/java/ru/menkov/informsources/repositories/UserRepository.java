@@ -14,6 +14,6 @@ public interface UserRepository extends CrudRepository<User,Integer> {
     Boolean existsUserByEmailAndPassword(String email, String password);
     Boolean existsUserById(Integer id);
     @Modifying
-    @Query("update inf_sources.users u set u.online = :online")
+    @Query(value = "update inf_sources.users u set u.online = :online", nativeQuery = true)
     void setUserInfoById(@Param("online") Boolean online);
 }
