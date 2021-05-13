@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.menkov.informsources.model.custom.User;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User,Integer> {
@@ -14,6 +15,7 @@ public interface UserRepository extends CrudRepository<User,Integer> {
     Boolean existsUserByEmailAndPassword(String email, String password);
     Boolean existsUserById(Integer id);
     @Modifying
+    @Transactional
     @Query(value = "update users u set u.online = :online", nativeQuery = true)
     void setUserInfoById(@Param("online") Boolean online);
 }
