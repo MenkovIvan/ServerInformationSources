@@ -19,4 +19,13 @@ public interface CatalogRepository extends CrudRepository<Catalog,Integer> {
     @Transactional
     @Query(value = "update inf_sources.catalog set description = :description where name= :name", nativeQuery = true)
     void setCatalogDescriptionByName(@Param("description") String description, @Param("name") String name);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from inf_sources.catalog where name= :name", nativeQuery = true)
+    void deleteCatalogDescriptionByName( @Param("name") String name);
+
+
+    @Override
+    Iterable<Catalog> findAll();
 }

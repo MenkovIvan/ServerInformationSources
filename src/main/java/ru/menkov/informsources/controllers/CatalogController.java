@@ -37,7 +37,7 @@ public class CatalogController {
     }
 
     @RequestMapping("/catalog/all")
-    public String getAllCatalog(@RequestBody String inputJson){
+    public String getAllCatalog(){
         log.info("Request to get all Catalogs, body");
         return catalogService.getAllCatalog();
     }
