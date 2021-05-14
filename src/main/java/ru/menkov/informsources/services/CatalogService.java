@@ -55,7 +55,7 @@ public class CatalogService extends ru.menkov.informsources.services.Service {
 
         if (catalogRepository.existsCatalogByName(catalogFromClient.getName())){
 
-            catalogRepository.deleteCatalogDescriptionByName(catalogFromClient.getName());
+            catalogRepository.deleteCatalogByName(catalogFromClient.getName());
 
             log.info("exist in db, delete him");
             message += "correct, catalog with input name is exist, delete him";

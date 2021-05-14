@@ -23,7 +23,7 @@ public interface CatalogRepository extends CrudRepository<Catalog,Integer> {
     @Modifying
     @Transactional
     @Query(value = "delete from inf_sources.catalog where name= :name", nativeQuery = true)
-    void deleteCatalogDescriptionByName( @Param("name") String name);
+    void deleteCatalogByName( @Param("name") String name);
 
 
     @Override

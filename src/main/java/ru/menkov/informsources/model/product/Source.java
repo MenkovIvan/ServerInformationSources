@@ -1,7 +1,11 @@
 package ru.menkov.informsources.model.product;
 
-import java.sql.Blob;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "source",schema = "inf_sources")
 public class Source {
     private Integer source_id;
 
@@ -9,7 +13,7 @@ public class Source {
     private String description;
     private Integer user_id;
     private Integer catalog_id;
-    private Blob image;
+    private String value;
 
     public Integer getSource_id() {
         return source_id;
@@ -51,11 +55,11 @@ public class Source {
         this.catalog_id = catalog_id;
     }
 
-    public Blob getImage() {
-        return image;
+    public String getValue() {
+        return value;
     }
 
-    public void setImage(Blob image) {
-        this.image = image;
+    public void setValue(String value) {
+        this.value = value;
     }
 }
