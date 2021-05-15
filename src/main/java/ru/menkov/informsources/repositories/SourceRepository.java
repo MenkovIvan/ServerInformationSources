@@ -15,7 +15,7 @@ public interface SourceRepository extends CrudRepository<Source,Integer> {
     Boolean existsSourceByName(String name);
     Source findSourceByName(String name);
     Iterable<Source> findAllByCatalog_id(Integer catalog_id);
-    List<Source> findAllByUser_id(Integer user_id);
+    List<Source> findAllByUserId(Integer user_id);
 
     @Modifying
     @Transactional

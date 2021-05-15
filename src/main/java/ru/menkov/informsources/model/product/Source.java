@@ -12,7 +12,7 @@ public class Source {
 
     private String name;
     private String description;
-    private Integer user_id;
+    private Integer userId;
     private Integer catalog_id;
     private String value;
 
@@ -40,12 +40,12 @@ public class Source {
         this.description = description;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getCatalog_id() {

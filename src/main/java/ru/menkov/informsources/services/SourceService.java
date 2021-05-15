@@ -12,7 +12,6 @@ import ru.menkov.informsources.repositories.CatalogRepository;
 import ru.menkov.informsources.repositories.SourceRepository;
 import ru.menkov.informsources.repositories.UserRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -195,7 +194,7 @@ public class SourceService extends ru.menkov.informsources.services.Service {
         Integer status;
 
         if (userFromDb != null){
-            List<Source> sourceUser = sourceRepository.findAllByUser_id(userFromDb.getId());
+            List<Source> sourceUser = sourceRepository.findAllByUserId(userFromDb.getId());
 
             return gson.toJson(sourceUser);
         } else {
