@@ -12,7 +12,9 @@ public class Source {
 
     private String name;
     private String description;
+    @Column(name = "userId")
     private Integer userId;
+    @Column(name = "catalogId")
     private Integer catalogId;
     private String value;
 
