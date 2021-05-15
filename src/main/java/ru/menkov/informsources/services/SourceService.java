@@ -12,6 +12,8 @@ import ru.menkov.informsources.repositories.CatalogRepository;
 import ru.menkov.informsources.repositories.SourceRepository;
 import ru.menkov.informsources.repositories.UserRepository;
 
+import java.util.ArrayList;
+
 @Service
 @Slf4j
 public class SourceService extends ru.menkov.informsources.services.Service {
@@ -192,7 +194,7 @@ public class SourceService extends ru.menkov.informsources.services.Service {
         Integer status;
 
         if (userFromDb != null){
-            Iterable<Source> sourceUser = sourceRepository.findAllByUser_id(userFromDb.getId());
+            ArrayList<Source> sourceUser = sourceRepository.findAllByUser_id(userFromDb.getId());
 
             return gson.toJson(sourceUser);
         } else {
