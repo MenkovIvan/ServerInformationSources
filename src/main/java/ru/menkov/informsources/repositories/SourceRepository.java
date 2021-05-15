@@ -8,14 +8,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.menkov.informsources.model.product.Source;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public interface SourceRepository extends CrudRepository<Source,Integer> {
     Boolean existsSourceByName(String name);
     Source findSourceByName(String name);
     Iterable<Source> findAllByCatalog_id(Integer catalog_id);
-    ArrayList<Source> findAllByUser_id(Integer user_id);
+    List<Source> findAllByUser_id(Integer user_id);
 
     @Modifying
     @Transactional
