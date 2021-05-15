@@ -14,8 +14,8 @@ import java.util.List;
 public interface SourceRepository extends CrudRepository<Source,Integer> {
     Boolean existsSourceByName(String name);
     Source findSourceByName(String name);
-    Iterable<Source> findAllByCatalog_id(Integer catalog_id);
-    List<Source> findAllByUserId(Integer user_id);
+    Iterable<Source> findAllByCatalogId(Integer catalogId);
+    List<Source> findAllByUserId(Integer userId);
 
     @Modifying
     @Transactional
