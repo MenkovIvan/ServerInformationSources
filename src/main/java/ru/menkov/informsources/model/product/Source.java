@@ -1,12 +1,13 @@
 package ru.menkov.informsources.model.product;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "source",schema = "inf_sources")
 public class Source {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer source_id;
 
     private String name;
