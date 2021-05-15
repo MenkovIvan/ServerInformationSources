@@ -32,7 +32,9 @@ public class SourceService extends ru.menkov.informsources.services.Service {
     }
 
     public String addSource(String inputJson){
+        log.info("start add");
         Source sourceFromClient = gson.fromJson(inputJson, Source.class);
+        log.info("after create sourceFromClient");
 
         String message = "Result of add = {";
         Integer status;
