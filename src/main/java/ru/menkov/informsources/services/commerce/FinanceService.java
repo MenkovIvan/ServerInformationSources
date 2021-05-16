@@ -68,7 +68,7 @@ public class FinanceService extends ru.menkov.informsources.services.Service {
             return getJsonStringWithFinance(finance, message, status);
 
         } else{
-            log.info("user not exist in db");
+            log.info("finance not exist in db");
             message += "incorrect, Finance with input id is not exist";
             status = RequestStatus.ERROR.getStatus();
         }

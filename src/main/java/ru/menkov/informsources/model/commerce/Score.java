@@ -1,6 +1,12 @@
 package ru.menkov.informsources.model.commerce;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "score", schema = "inf_sources")
 public class Score {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer financeId;
     private Double money;

@@ -11,7 +11,6 @@ public class Finance {
     private Integer userId;
 
     private String card;
-    private Double money;
     private Boolean agreement;
 
     public Integer getId() {
@@ -36,14 +35,6 @@ public class Finance {
 
     public void setCard(String card) {
         this.card = card;
-    }
-
-    public Double getMoney() {
-        return money;
-    }
-
-    public void setMoney(Double money) {
-        this.money = money;
     }
 
     public Boolean getAgreement() {
