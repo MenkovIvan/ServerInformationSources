@@ -56,7 +56,7 @@ public class SourceController {
     @RequestMapping("/source/all/catalog")
     public String getAllSourcesFromCatalog(@RequestBody String inputJson){
         log.info("Request to get all Sources from Catalog, body = {} ", inputJson);
-        return "sourceService.getAllSourcesFromCatalog(inputJson)";
+        return sourceService.getAllSourcesFromCatalog(inputJson);
     }
 
     @RequestMapping("/source/all/user")
