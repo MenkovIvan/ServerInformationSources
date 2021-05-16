@@ -1,27 +1,33 @@
 package ru.menkov.informsources.model.commerce;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "finance", schema = "inf_sources")
 public class Finance {
-    private Integer finance_id;
-    private Integer user_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private Integer userId;
 
     private String card;
     private Double money;
     private Boolean agreement;
 
-    public Integer getFinance_id() {
-        return finance_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setFinance_id(Integer finance_id) {
-        this.finance_id = finance_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getCard() {

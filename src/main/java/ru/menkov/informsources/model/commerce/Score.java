@@ -1,24 +1,24 @@
 package ru.menkov.informsources.model.commerce;
 
 public class Score {
-    private Integer score_id;
-    private Integer finance_id;
+    private Integer id;
+    private Integer financeId;
     private Double money;
 
-    public Integer getScore_id() {
-        return score_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setScore_id(Integer score_id) {
-        this.score_id = score_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getFinance_id() {
-        return finance_id;
+    public Integer getFinanceId() {
+        return financeId;
     }
 
-    public void setFinance_id(Integer finance_id) {
-        this.finance_id = finance_id;
+    public void setFinanceId(Integer financeId) {
+        this.financeId = financeId;
     }
 
     public Double getMoney() {
