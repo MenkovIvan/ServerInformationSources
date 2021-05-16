@@ -171,7 +171,7 @@ public class SourceService extends ru.menkov.informsources.services.Service {
         return getJsonStringWithSource(sourceFromDb,message,status);
     }
 
-    public String getAllSourcesFromCatalog(String inputJson){
+    /*public String getAllSourcesFromCatalog(String inputJson){
         Catalog catalogFromClient = gson.fromJson(inputJson, Catalog.class);
         Catalog catalogFromDb = catalogRepository.findCatalogByName(catalogFromClient.getName());
 
@@ -188,7 +188,7 @@ public class SourceService extends ru.menkov.informsources.services.Service {
             status = RequestStatus.ERROR.getStatus();
             return getJsonString(message,status);
         }
-    }
+    }*/
 
     public String getAllSourcesFromUser(String inputJson){
         User userFromClient = gson.fromJson(inputJson, User.class);

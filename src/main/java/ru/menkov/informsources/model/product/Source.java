@@ -10,7 +10,7 @@ public class Source {
     private Integer id;
 
     private Integer userId;
-    private Integer catalogId;
+    //private Integer catalogId;
 
     private String name;
     private String description;
@@ -30,14 +30,6 @@ public class Source {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Integer getCatalogId() {
-        return catalogId;
-    }
-
-    public void setCatalogId(Integer catalogId) {
-        this.catalogId = catalogId;
     }
 
     public String getName() {
