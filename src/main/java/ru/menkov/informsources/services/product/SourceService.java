@@ -1,4 +1,4 @@
-package ru.menkov.informsources.services;
+package ru.menkov.informsources.services.product;
 
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
@@ -8,9 +8,9 @@ import ru.menkov.informsources.helpers.RequestStatus;
 import ru.menkov.informsources.model.custom.User;
 import ru.menkov.informsources.model.product.Catalog;
 import ru.menkov.informsources.model.product.Source;
-import ru.menkov.informsources.repositories.CatalogRepository;
-import ru.menkov.informsources.repositories.SourceRepository;
-import ru.menkov.informsources.repositories.UserRepository;
+import ru.menkov.informsources.repositories.product.CatalogRepository;
+import ru.menkov.informsources.repositories.product.SourceRepository;
+import ru.menkov.informsources.repositories.custom.UserRepository;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class SourceService extends ru.menkov.informsources.services.Service {
             status = RequestStatus.ERROR.getStatus();
 
         } else{
-
+            log.info("not exist");
             sourceRepository.save(sourceFromClient);
             log.info("add to db");
             message += "correct, add Source";
@@ -54,6 +54,8 @@ public class SourceService extends ru.menkov.informsources.services.Service {
         }
 
         message += "}";
+
+        log.info("end");
 
         return getJsonString(message, status);
     }

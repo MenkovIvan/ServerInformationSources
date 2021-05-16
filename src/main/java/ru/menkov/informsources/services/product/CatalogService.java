@@ -1,4 +1,4 @@
-package ru.menkov.informsources.services;
+package ru.menkov.informsources.services.product;
 
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.menkov.informsources.helpers.RequestStatus;
 import ru.menkov.informsources.model.product.Catalog;
-import ru.menkov.informsources.repositories.CatalogRepository;
+import ru.menkov.informsources.repositories.product.CatalogRepository;
 
 @Service
 @Slf4j

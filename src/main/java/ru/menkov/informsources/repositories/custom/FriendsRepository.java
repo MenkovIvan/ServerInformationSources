@@ -1,4 +1,4 @@
-package ru.menkov.informsources.repositories;
+package ru.menkov.informsources.repositories.custom;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

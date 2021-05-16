@@ -1,4 +1,4 @@
-package ru.menkov.informsources.repositories;
+package ru.menkov.informsources.repositories.product;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
