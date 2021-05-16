@@ -179,7 +179,7 @@ public class SourceService extends ru.menkov.informsources.services.Service {
         Integer status;
 
         if (catalogFromDb != null){
-            Iterable<Source> sourceCatalog = sourceRepository.findAllByCatalogId(catalogFromClient.getId());
+            Iterable<Source> sourceCatalog = sourceRepository.findAllByCatalogId(catalogFromDb.getId());
 
             return gson.toJson(sourceCatalog);
         } else {
