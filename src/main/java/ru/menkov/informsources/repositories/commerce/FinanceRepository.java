@@ -17,7 +17,7 @@ public interface FinanceRepository extends CrudRepository<Finance,Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "update inf_sources.finance set card = :description where user_id= :userId", nativeQuery = true)
+    @Query(value = "update inf_sources.finance set card = :card where user_id= :userId", nativeQuery = true)
     void setFinanceCardByUserId(@Param("userId") Integer userId, @Param("card") String name);
 
     @Modifying
